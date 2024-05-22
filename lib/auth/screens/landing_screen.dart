@@ -10,7 +10,10 @@ class LandingScreen extends StatelessWidget {
       body: Center(
         child: Text(
           "Welcome to \n Job portal",
-          style: TextStyle(fontSize: 30, color: AppPalate.black),
+          style: TextStyle(
+              fontSize: 30,
+              color: AppPalate.black,
+              fontWeight: FontWeight.bold),
         ),
       ),
     );

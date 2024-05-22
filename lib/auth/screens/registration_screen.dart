@@ -114,6 +114,7 @@ class RegisterPage extends StatelessWidget {
                                 onChanged: (value) {
                                   provider.policyCheckBox = value;
                                 },
+                                activeColor: AppPalate.buttonBlue,
                               ),
                               Expanded(
                                   child: Text.rich(TextSpan(children: [

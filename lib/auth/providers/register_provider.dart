@@ -5,6 +5,7 @@ import 'package:job_asignment_1_ovesh/core/theme/colors.dart';
 class RegisterProvider extends ChangeNotifier {
   final _formKey = GlobalKey<FormState>();
   GlobalKey<FormState> get formKey => _formKey;
+
 // First Name
   final RegisterModel _firstName = RegisterModel(
       controller: TextEditingController(),
@@ -28,12 +29,18 @@ class RegisterProvider extends ChangeNotifier {
 
 // password
   bool _isObscured = true;
+  get isObscured => _isObscured;
+  set isObscured(value) {
+    _isObscured = value;
+    notifyListeners();
+  }
 
+  final TextEditingController passwordController = TextEditingController();
   RegisterModel _password() {
     return RegisterModel(
-        controller: TextEditingController(),
+        controller: passwordController,
         iconTap: () {
-          _isObscured = !_isObscured;
+          isObscured = !isObscured;
           notifyListeners();
         },
         hintText: 'Doe123@',
