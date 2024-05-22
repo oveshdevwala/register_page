@@ -8,7 +8,7 @@ class FormTextField extends StatelessWidget {
     super.key,
     required this.controller,
     required this.hintText,
-    required this.isObscured,
+    this.isObscured = false,
     required this.title,
     required this.validator,
     this.suffixIcon,
@@ -39,7 +39,6 @@ class FormTextField extends StatelessWidget {
           decoration: InputDecoration(
               hintText: hintText,
               hintStyle: TextStyle(color: AppPalate.grey),
-          
               suffixIcon: suffixIcon != null
                   ? IconButton(onPressed: iconTap, icon: suffixIcon!)
                   : null,
