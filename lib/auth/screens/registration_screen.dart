@@ -83,7 +83,7 @@ class RegisterPage extends StatelessWidget {
                           FormTextField(
                             controller: provider.passwordController,
                             hintText: '',
-                            isObscured: true,
+                            isObscured: provider.isObscured,
                             title: 'Password',
                             iconTap: () {
                               provider.isObscured = !provider.isObscured;
