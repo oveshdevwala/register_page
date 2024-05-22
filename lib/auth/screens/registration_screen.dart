@@ -139,7 +139,7 @@ class RegisterPage extends StatelessWidget {
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               color: AppPalate.black,
-                                              fontSize: 13,
+                                              fontSize: 14,
                                             ),
                                           ),
                                           TextSpan(
@@ -153,7 +153,7 @@ class RegisterPage extends StatelessWidget {
                                               decorationThickness: 2.2,
                                               decoration:
                                                   TextDecoration.underline,
-                                              fontSize: 13,
+                                              fontSize: 14,
                                             ),
                                           ),
                                         ],
