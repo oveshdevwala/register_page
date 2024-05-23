@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_asignment_1_ovesh/auth/providers/register_provider.dart';
 import 'package:job_asignment_1_ovesh/auth/screens/landing_screen.dart';
 import 'package:job_asignment_1_ovesh/auth/widgets/form_field.dart';
-import 'package:job_asignment_1_ovesh/core/constant/auth_text.dart';
+import 'package:job_asignment_1_ovesh/core/constant/text.dart';
 import 'package:job_asignment_1_ovesh/core/theme/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -134,7 +134,7 @@ class RegisterPage extends StatelessWidget {
                                       TextSpan(
                                         children: [
                                           TextSpan(
-                                            text: AuthTextConst
+                                            text: TextConst
                                                 .policyCheckBoxText,
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
@@ -143,7 +143,7 @@ class RegisterPage extends StatelessWidget {
                                             ),
                                           ),
                                           TextSpan(
-                                            text: AuthTextConst
+                                            text: TextConst
                                                 .policyCheckBoxText2,
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,

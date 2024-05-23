@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:job_asignment_1_ovesh/auth/providers/landing_page_provider.dart';
 import 'package:job_asignment_1_ovesh/auth/providers/register_provider.dart';
-import 'package:job_asignment_1_ovesh/auth/screens/landing_screen.dart';
+import 'package:job_asignment_1_ovesh/auth/screens/registration_screen.dart';
 import 'package:job_asignment_1_ovesh/core/theme/theme_data/app_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -22,11 +23,10 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           home: MultiProvider(
             providers: [
-              ChangeNotifierProvider(
-                create: (context) => RegisterProvider(),
-              )
+              ChangeNotifierProvider(create: (context) => RegisterProvider()),
+              ChangeNotifierProvider(create: (context) => LandingPageProvider()),
             ],
-            child: const LandingScreen(),
+            child: const RegisterPage(),
           ),
         );
       },
