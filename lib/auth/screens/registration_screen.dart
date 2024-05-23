@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_asignment_1_ovesh/auth/providers/register_provider.dart';
 import 'package:job_asignment_1_ovesh/auth/screens/landing_screen.dart';
 import 'package:job_asignment_1_ovesh/auth/widgets/form_field.dart';
+import 'package:job_asignment_1_ovesh/core/constant/text.dart';
 import 'package:job_asignment_1_ovesh/core/theme/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +17,7 @@ class RegisterPage extends StatelessWidget {
       backgroundColor: AppPalate.background,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(15),
           child:
               Consumer<RegisterProvider>(builder: (context, provider, child) {
             return Form(
@@ -44,34 +46,31 @@ class RegisterPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           FormTextField(
-                            controller: provider.firstName.controller,
-                            hintText: provider.firstName.hintText,
-                            isObscured: provider.firstName.isObscured,
-                            title: provider.firstName.title,
+                            controller: provider.fNameController,
+                            hintText: 'Jane',
+                            title: 'First Name',
                             validator: (value) {
                               if (value!.length < 5) {
-                                return '• ${provider.firstName.title} must be at least 5 characters';
+                                return '• First Name must be at least 5 characters';
                               }
                               return null;
                             },
                           ),
                           FormTextField(
-                            controller: provider.lastName.controller,
-                            hintText: provider.lastName.hintText,
-                            isObscured: provider.lastName.isObscured,
-                            title: provider.lastName.title,
+                            controller: provider.lNameController,
+                            hintText: 'Doe',
+                            title: 'Last Name',
                             validator: (value) {
                               if (value!.length < 5) {
-                                return '• ${provider.lastName.title} must be at least 5 characters';
+                                return '• last Name must be at least 5 characters';
                               }
                               return null;
                             },
                           ),
                           FormTextField(
-                            controller: provider.email.controller,
-                            hintText: provider.email.hintText,
-                            isObscured: provider.email.isObscured,
-                            title: provider.email.title,
+                            controller: provider.emailController,
+                            hintText: 'jane@doe.com',
+                            title: 'Email',
                             validator: (value) {
                               if (!value!.contains(RegExp(
                                   r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"))) {
@@ -82,12 +81,19 @@ class RegisterPage extends StatelessWidget {
                             },
                           ),
                           FormTextField(
-                            controller: provider.password.controller,
-                            hintText: provider.password.hintText,
-                            isObscured: provider.password.isObscured,
-                            title: provider.password.title,
-                            iconTap: provider.password.iconTap,
-                            suffixIcon: provider.password.suffixIcon,
+                            controller: provider.passwordController,
+                            hintText: '',
+                            isObscured: provider.isObscured,
+                            title: 'Password',
+                            iconTap: () {
+                              provider.isObscured = !provider.isObscured;
+                            },
+                            suffixIcon: Icon(
+                              provider.isObscured
+                                  ? CupertinoIcons.eye_solid
+                                  : CupertinoIcons.eye_slash_fill,
+                              color: AppPalate.grey,
+                            ),
                             validator: (value) {
                               String erroMsg = '';
 
@@ -108,33 +114,52 @@ class RegisterPage extends StatelessWidget {
                             },
                           ),
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Checkbox(
                                 value: provider.policyCheckBox,
                                 onChanged: (value) {
                                   provider.policyCheckBox = value;
                                 },
+                                visualDensity: VisualDensity.comfortable,
                                 activeColor: AppPalate.buttonBlue,
                               ),
                               Expanded(
-                                  child: Text.rich(TextSpan(children: [
-                                TextSpan(
-                                    text: provider.policyCheckBoxText,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        color: AppPalate.black,
-                                        fontSize: 13)),
-                                TextSpan(
-                                    text: provider.policyCheckBoxText2,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        color: AppPalate.black,
-                                        decorationStyle:
-                                            TextDecorationStyle.solid,
-                                        decorationThickness: 2.2,
-                                        decoration: TextDecoration.underline,
-                                        fontSize: 13.5))
-                              ]))),
+                                child: Column(
+                                  children: [
+                                    const SizedBox(height: 10),
+                                    Text.rich(
+                                      maxLines: 3,
+                                      style: const TextStyle(),
+                                      TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: TextConst.policyCheckBoxText,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: AppPalate.black,
+                                              fontSize: 13,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text: TextConst.policyCheckBoxText2,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: AppPalate.black,
+                                              decorationStyle:
+                                                  TextDecorationStyle.solid,
+                                              decorationThickness: 2.2,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              fontSize: 13,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                           const SizedBox(height: 10),
@@ -144,12 +169,24 @@ class RegisterPage extends StatelessWidget {
                                 onPressed: () {
                                   if (provider.formKey.currentState!
                                       .validate()) {
-                                    Navigator.pushReplacement(context,
-                                        MaterialPageRoute(
-                                      builder: (context) {
-                                        return const LandingScreen();
-                                      },
-                                    ));
+                                    if (provider.policyCheckBox) {
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(
+                                        builder: (context) {
+                                          return const LandingScreen();
+                                        },
+                                      ));
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              backgroundColor:
+                                                  AppPalate.buttonBlue,
+                                              content: Text(
+                                                'Accept privacy policy first',
+                                                style: TextStyle(
+                                                    color: AppPalate.white),
+                                              )));
+                                    }
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
