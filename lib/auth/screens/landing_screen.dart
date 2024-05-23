@@ -23,7 +23,7 @@ class LandingScreen extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
             begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
+            end: Alignment.bottomCenter,
             colors: [
               Colors.pink.shade100,
               Colors.white,
