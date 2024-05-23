@@ -134,8 +134,7 @@ class RegisterPage extends StatelessWidget {
                                       TextSpan(
                                         children: [
                                           TextSpan(
-                                            text: TextConst
-                                                .policyCheckBoxText,
+                                            text: TextConst.policyCheckBoxText,
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               color: AppPalate.black,
@@ -143,8 +142,7 @@ class RegisterPage extends StatelessWidget {
                                             ),
                                           ),
                                           TextSpan(
-                                            text: TextConst
-                                                .policyCheckBoxText2,
+                                            text: TextConst.policyCheckBoxText2,
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               color: AppPalate.black,
@@ -171,12 +169,24 @@ class RegisterPage extends StatelessWidget {
                                 onPressed: () {
                                   if (provider.formKey.currentState!
                                       .validate()) {
-                                    Navigator.pushReplacement(context,
-                                        MaterialPageRoute(
-                                      builder: (context) {
-                                        return const LandingScreen();
-                                      },
-                                    ));
+                                    if (provider.policyCheckBox) {
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(
+                                        builder: (context) {
+                                          return const LandingScreen();
+                                        },
+                                      ));
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              backgroundColor:
+                                                  AppPalate.buttonBlue,
+                                              content: Text(
+                                                'Accept privacy policy first',
+                                                style: TextStyle(
+                                                    color: AppPalate.white),
+                                              )));
+                                    }
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
