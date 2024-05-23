@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_asignment_1_ovesh/auth/providers/register_provider.dart';
-import 'package:job_asignment_1_ovesh/auth/screens/registration_screen.dart';
+import 'package:job_asignment_1_ovesh/auth/screens/landing_screen.dart';
 import 'package:job_asignment_1_ovesh/core/theme/theme_data/app_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
                 create: (context) => RegisterProvider(),
               )
             ],
-            child: const RegisterPage(),
+            child: const LandingScreen(),
           ),
         );
       },
