@@ -52,6 +52,7 @@ class LandingScreen extends StatelessWidget {
                       imagePath: ImagePath.chatIcon,
                       title: TextConst.chatTitle),
                   SliderItemWidget(
+                      iconSize: 180,
                       caption: TextConst.videoCaption,
                       imagePath: ImagePath.videoIcon,
                       title: TextConst.videoTitle),
