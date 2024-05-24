@@ -202,11 +202,20 @@ class RegisterPage extends StatelessWidget {
                   ),
                   Align(
                       alignment: Alignment.bottomCenter,
-                      child: Text(
-                        'Have an a account? Sign in',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: AppPalate.black),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return const LandingScreen();
+                            },
+                          ));
+                        },
+                        child: Text(
+                          'Have an a account? Sign in',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: AppPalate.black),
+                        ),
                       ))
                 ],
               ),

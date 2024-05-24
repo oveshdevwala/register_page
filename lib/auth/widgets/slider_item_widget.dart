@@ -9,10 +9,12 @@ class SliderItemWidget extends StatelessWidget {
     required this.caption,
     required this.imagePath,
     required this.title,
+     this.iconSize=300,
   });
   String imagePath;
   String title;
   String caption;
+  double iconSize;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,10 +26,10 @@ class SliderItemWidget extends StatelessWidget {
                 flex: 2,
                 child: Align(
                     alignment: Alignment.center,
-                    child: ClipRRect(
+                    child: SizedBox(
+                      height: iconSize,
                       child: Image.asset(
                         imagePath,
-                        fit: BoxFit.cover,
                       ),
                     ))),
             Expanded(
@@ -50,8 +52,6 @@ class SliderItemWidget extends StatelessWidget {
                         color: AppPalate.grey,
                         fontWeight: FontWeight.bold),
                   ),
-
-                  
                 ],
               ),
             ),
